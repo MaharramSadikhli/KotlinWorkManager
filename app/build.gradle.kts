@@ -3,6 +3,11 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
+object Libs {
+    private const val WORK_VERSION = "2.9.0"
+
+    const val ANDROIDX_WORK_RUNTIME_KTX = "androidx.work:work-runtime-ktx:$WORK_VERSION"
+}
 
 android {
     namespace = "com.example.kotlinworkmanager"
@@ -28,11 +33,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "19"
     }
 }
 
@@ -46,4 +51,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // WorkManager
+    implementation(Libs.ANDROIDX_WORK_RUNTIME_KTX)
 }
